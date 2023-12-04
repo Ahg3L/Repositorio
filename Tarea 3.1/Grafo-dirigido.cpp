@@ -3,17 +3,17 @@
 
 using namespace std;
 
-struct limite {
-    int from;
-    int to;
+struct limite{
+    int A;
+    int B;
 };
 
 void mostrar(const vector<limite>& limites,int numNodes){
     vector<vector<int>> listaAdj(numNodes);
-    for (const auto& limite : limites) {
-        listaAdj[limite.from].push_back(limite.to);
+    for(const auto& limite : limites){
+        listaAdj[limite.A].push_back(limite.B);
     }
-    for (int i=0;i<numNodes;++i) {
+    for(int i=0;i<numNodes;++i) {
         cout <<"Nodo"<<i<<" tiene aristas dirigidas a: ";
         for (const auto& vecino : listaAdj[i]) {
             cout << vecino << " ";
@@ -22,9 +22,9 @@ void mostrar(const vector<limite>& limites,int numNodes){
     }
 }
 
-int main() {
+int main(){
     int numNodes = 5;
-    vector<limite> limites = {
+    vector<limite> limites={
         {0, 1},
         {0, 4},
         {1, 3},

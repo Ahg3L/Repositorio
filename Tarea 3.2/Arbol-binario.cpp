@@ -1,58 +1,57 @@
 #include "Libreria.h"
 
-struct nodo {
+struct nodo{
     int dato;
     nodo *der;
     nodo *izq;
 };
 
-nodo *crear(int n) {
+nodo *crear(int n){
     nodo *nuevo = new nodo();
-    nuevo->dato = n;
-    nuevo->der = NULL;
-    nuevo->izq = NULL;
+    nuevo->dato =n;
+    nuevo->der =NULL;
+    nuevo->izq =NULL;
     return nuevo;
 }
 
 nodo *arbol = NULL;
-
-void insertar(nodo *&arbol, int n) {
-    if (arbol == NULL) {
+void insertar(nodo *&arbol, int n){
+    if (arbol == NULL){
         nodo *nuevo = crear(n);
         arbol = nuevo;
-    } else {
+    } else{
         int valorR = arbol->dato;
-        if (n < valorR) {
+        if (n<valorR){
             insertar(arbol->izq, n);
-        } else {
+        } else{
             insertar(arbol->der, n);
         }
     }
 }
 
-void mostrar(nodo *arbol, int cont) {
-    if (arbol == NULL) {
+void mostrar(nodo *arbol, int cont){
+    if(arbol==NULL){
         return;
-    } else {
+    }else{
         mostrar(arbol->der, cont + 1);
         for (int i = 0; i < cont; i++) {
             cout<<"  ";
         }
-        cout<<arbol->dato << endl;
+        cout<<arbol->dato <<endl;
         mostrar(arbol->izq, cont + 1);
     }
 }
 
-int menu() {
+int menu(){
     int cont = 0;
     system("cls");
-    cout<<"\tMENU" << endl;
-    cout<<"1.-Ingresar un nodo." << endl;
-    cout<<"2.-Mostrar." << endl;
+    cout<<"\tMENU"<<endl;
+    cout<<"1.-Ingresar un nodo."<<endl;
+    cout<<"2.-Mostrar." <<endl;
     cout<<"3.-Salir. "<<endl;
     
     int opc = ingresar(3);
-    switch (opc) {
+    switch (opc){
         case 1:
             system("cls");
             cout<<"Ingresa el dato que quieres ingresar : ";

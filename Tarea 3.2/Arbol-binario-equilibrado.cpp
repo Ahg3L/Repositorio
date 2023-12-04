@@ -1,50 +1,50 @@
 #include "Libreria.h"
 
-struct nodo {
+struct nodo{
     int dato;
     nodo *der;
     nodo *izq;
 };
 
-nodo *crear(int n) {
-    nodo *nuevo = new nodo();
-    nuevo->dato = n;
+nodo *crear(int n){
+    nodo *nuevo=new nodo();
+    nuevo->dato= n;
     nuevo->der = NULL;
-    nuevo->izq = NULL;
+    nuevo->izq= NULL;
     return nuevo;
 }
 
 nodo *arbol = NULL;
 
-void insertar(nodo *&arbol, int n) {
-    if (arbol == NULL) {
-        nodo *nuevo = crear(n);
-        arbol = nuevo;
-    } else {
+void insertar(nodo *&arbol, int n){
+    if(arbol == NULL){
+        nodo *nuevo =crear(n);
+        arbol= nuevo;
+    }else{
         int valorR = arbol->dato;
-        if (n < valorR) {
+        if (n<valorR) {
             insertar(arbol->izq, n);
-        } else {
+        }else{
             insertar(arbol->der, n);
         }
     }
 }
 
-void mostrar(nodo *arbol, int cont) {
-    if (arbol == NULL) {
+void mostrar(nodo *arbol, int cont){
+    if(arbol == NULL){
         return;
-    } else {
+    }else{
         mostrar(arbol->der, cont + 1);
-        for (int i = 0; i < cont; i++) {
+        for (int i = 0; i < cont; i++){
             cout<<"  ";
         }
-        cout<<arbol->dato << endl;
-        mostrar(arbol->izq, cont + 1);
+        cout<<arbol->dato<<endl;
+        mostrar(arbol->izq,cont + 1);
     }
 }
 
 
-int main() {
+int main(){
     
     system("cls");
     int cont = 0;
